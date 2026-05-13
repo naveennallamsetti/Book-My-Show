@@ -2,7 +2,7 @@
 pipeline {
     agent any
     tools {
-        jdk 'Jdk21'
+        jdk 'jdk21'
         nodejs 'node23'
     }
     environment {
@@ -26,6 +26,7 @@ pipeline {
                     sh ''' 
                     $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=BMS \
                     -Dsonar.projectKey=BMS 
+                    -Dsonar.host.url=http://98.87.165.40:9000
                     '''
                 }
             }
@@ -66,7 +67,7 @@ pipeline {
         stage('Docker Build & Push') {
             steps {
                 script {
-                    withDockerRegistry(credentialsId: 'docker', toolName: 'docker') {
+                    withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
                         sh ''' 
                         echo "Building Docker image..."
                         docker build --no-cache -t kastrov/bms:latest -f bookmyshow-app/Dockerfile bookmyshow-app
