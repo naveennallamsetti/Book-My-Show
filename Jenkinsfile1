@@ -67,8 +67,7 @@ pipeline {
             steps {
                 script {
                     withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
-                        '''
-                        sh
+                        sh '''
                         echo "Building Docker image..."
                         docker build -t naveennallamsetti/bms:latest -f bookmyshow-app/Dockerfile bookmyshow-app
 
