@@ -26,7 +26,6 @@ pipeline {
                     sh ''' 
                     $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=BMS \
                     -Dsonar.projectKey=BMS 
-                    -Dsonar.host.url=http://98.87.165.40:9000
                     '''
                 }
             }
