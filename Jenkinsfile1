@@ -1,8 +1,8 @@
-(without K8S Stage)
+//(without K8S Stage)
 pipeline {
     agent any
     tools {
-        jdk 'jdk17'
+        jdk 'Jdk21'
         nodejs 'node23'
     }
     environment {
