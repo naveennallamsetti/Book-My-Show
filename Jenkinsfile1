@@ -67,12 +67,13 @@ pipeline {
             steps {
                 script {
                     withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
-                        sh ''' 
+                        '''
+                        sh
                         echo "Building Docker image..."
-                        docker build --no-cache -t kastrov/bms:latest -f bookmyshow-app/Dockerfile bookmyshow-app
+                        docker build -t naveennallamsetti/bms:latest -f bookmyshow-app/Dockerfile bookmyshow-app
 
-                        echo "Pushing Docker image to registry..."
-                        docker push kastrov/bms:latest
+                        echo "Pushing Docker image..."
+                        docker push naveennallamsetti/bms:latest
                         '''
                     }
                 }
